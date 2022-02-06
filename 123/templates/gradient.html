@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet"
+    type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'
+    type='text/css'>
+  <link
+    href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+    rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  <link href="{{ url_for('static', filename='css/clean-blog.min.css') }}" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Gradient Descent</title>
+
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-10 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">Machine learning Bootcamp</a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a href="/ml" class="nav-link">Machine Learning</a>
+          </li>
+          <li class="nav-item">
+            <a href="/contact" class="nav-link">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav> <br> <br> <br>
+
+  <div style="text-align: center;" , class="heading">
+    <h1> Gradient Descent </h1>
+
+
+  </div>
+  <p  style="margin-left: 20px;"><strong>Gradient Descent</strong> is an optimization algorithims used to find the values of a
+    parameters(coefficients) of a function(f) that minimizes a cost function. </p>
+  <p  style="margin-left: 20px;"> In simple words, <strong>Gradient Descent</strong> is an Algorithim that finds best fits line for given training
+    dataset </p>
+
+  <!-- Learn Sections -->
+  <section id="learn" class="p-5">
+    <div class="container">
+      <div class="row align-items-center justify-content-between">
+        <div class="col-md">
+          <img src="static/img/download.png" class="img-fluid" alt="Gradient Descent" />
+          
+          <pre>
+          <p>                 Gradient Descent</p>
+        </pre>
+        </div>
+        <div class="col-md p-5">
+          <h2> Gradient Descent </h2>
+          <p class="lead">
+            X_new = Current value of X(X <sub>c</sub> ) - learningRate(LR) * dy/dx
+          </p>
+          <p>
+          <h6 style="text-align: center;">Loss function</h6>
+          <ul> Sum Square Error</ul>
+          <ul>Mean Aquare Error</ul>
+          <ul>Absolute Error</ul>
+          <ul>Cross Entropy</ul>
+          <ul>Mean Absolute Error</ul>
+          </p>
+          <p></p>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <table style="margin-left: 20px;">
+    <tr>
+      <th>Algorithim</th>
+      <th>Batch size</th>
+
+    </tr>
+    <tr>
+      <td> Gradient Descent </td>
+      <td> Full Batch </td>
+    </tr>
+    <tr>
+      <td> Mini- Batch Gradient Descent </td>
+      <td> N-choose mannually by the data scientiest</td>
+    </tr>
+    <tr>
+      <td>Stochastic Gradient Descent</td>
+      <td>One batch </td>
+    </tr>
+
+  </table>
+
+
+  </div>
+<h1>
+  This is source code of graident Descent Image
+</h1>
+  <pre style="background-color: black;">
+      <code>
+        <style>
+          pre {
+              font-family: Arial;
+              color: #009900;
+              margin: 25px;
+          }
+      </style>
+<strong>Step1: Import the module</strong>
+
+import matplotlib.pyplot as plot
+import numpy as np
+
+
+def gradient_descent(x,y):
+    m_curr = b_curr = 0  
+    rate = 0.01
+    n = len(x)
+    plt.scatter(x,y,color='red',marker='+',linewidth='5')
+    for i in range(10000):
+        y_predicted = m_curr * x + b_curr  <strong> #Y=mx+c </strong>
+#         print (m_curr,b_curr, i)
+        plt.plot(x,y_predicted,color='green')
+        md = -(2/n)*sum(x*(y-y_predicted))
+        yd = -(2/n)*sum(y-y_predicted)
+        m_curr = m_curr - rate * md
+        b_curr = b_curr - rate * yd
+        
+x = np.array([1,2,3,4,5])
+y = np.array([5,7,9,11,13])
+gradient_descent(x,y)
+</code>
+    </pre>
+
+
+  <!-- pagination -->
+  <nav aria-label="Page navigation example" my=100>
+    <ul class="pagination justify-content-center" center="right">
+
+      <li class="page-item"><a class="page-link bg-dark text-light" href="/onehot">Next</a></li>
+    </ul>
+  </nav>
+
+  <!-- Footer -->
+  <footer class="p-5 bg-dark text-white text-center position-relative">
+    <div class="container">
+      <p class="lead">Copyright &copy; 2021 Machine learning Bootcamp</p>
+
+      <a href="#" class="position-absolute bottom-0 end-0 p-5">
+        <i class="bi bi-arrow-up-circle h1"></i>
+      </a>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
