@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet"
+        type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'
+        type='text/css'>
+    <link
+        href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+        rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', filename='css/clean-blog.min.css') }}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <title>OneHotEncoding</title>
+</head>
+<body>
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-10 fixed-top">
+        <div class="container">
+            <a href="/" class="navbar-brand">Machine learning Bootcamp</a>
+  
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+  
+            <div class="collapse navbar-collapse" id="navmenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a href="/ml" class="nav-link">Machine Learning</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/contact" class="nav-link">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br> <br> <br>
+
+    <div style="text-align:center;" class="login">
+        <h1 class="header centre"> Categorical Variable </h1>
+    </div>
+    <br>
+
+    <div class="row center">
+        <h5 class="header col s12 light">Predict the price of home using location (Categorical variables Tutorial)
+            <br>
+            <br>
+        <h4 style="margin-left: 20px;">  Rule </h4>
+        <ul style="margin-left: 20px;">
+            <li> Choose one of the state from banglore/mumbai/delhi and put 1 in that place and 0 into other place </li>
+            <li>Example delhi 1 and mumbai and banglore=0</li>
+            <li> choose the area and they predict price</li>
+        </ul>
+        </h5>
+        <form action="{{ url_for('predict2')}}" method="post" style="margin-left: 20px;">
+            
+            <input type="num"name="banglore" placeholder="banglore" required="required" />
+           <input type="num" name="delhi" placeholder="delhi" required="required" />
+            <input type="num" name="mumbai" placeholder="mumbai" required="required" /> 
+            <input type="text" name="Area" placeholder="Area" required="required" /> 
+            <!-- <input type="text" name="City2" placeholder="city3" required="required" /> -->
+            <!-- <input type="text" name="price1" placeholder="Price1" required="required" /> -->
+            <!-- <input type="text" name="interview_score" placeholder="Interview Score" required="required" /> -->
+            
+
+            <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+        </form>
+
+        <br>
+        <br>
+        {{ pred2 }}
+
+    </div>
+    <hr>
+    <div style="text-align:center;" class="login">
+        <h1 class="header centre"> Dummy variable </h1>
+    </div>
+
+    <p style="margin-left: 20px;">  In this tutorial, you will learn what a categorical variable is, along with three approaches for handling this type of data and latter we will discuss your model source code</p>
+    <p style="margin-left: 20px;"> Some times Your data contain categorical values but machine learning doesn't understand categorical features but only features so change categorical features into numerical features </p>
+
+    <h3 style="margin-left: 20px;">Three Approaches for Categorical data </h3>
+    <ul>
+        <li> <h4>1. Drop Categorical Variables</h4></li>
+        <li>The easiest approach to dealing with categorical variables is to simply remove them from the dataset. This approach will only work well if the columns did not contain useful information.</li> <br>
+        <li><h4>2. Label Encoding</h4></li>
+        <li>Label encoding assigns each unique value to a different integer.</li>
+        <li>
+        This approach assumes an ordering of the categories: "Never" (0) < "Rarely" (1) < "Most days" (2) < "Every day" (3). 
+    </li>
+    <li>But, Not all categorical variables have a clear ordering in the values</li>
+    <br>
+    <li> <h4> 3.  One-Hot Encoding</h4> </li>
+    <li>
+        One-hot encoding creates new columns indicating the presence (or absence) of each possible value in the original data.</li>
+    </ul>
+    <div style="text-align: center;">
+        <h3>Dummy variable</h3>
+        <p style="margin-left: 20px;"> now we code home price prediction model using dummy variables </p>
+    </div>
+    <div style="margin-left: 20px;">
+    <pre style="background-color: black;">
+        <code style="margin-left: 20px; color:aqua;">
+            <h4> Load the data</h4>
+import pandas as pd
+import numpy as np
+data = pd.read_excel("Book 8.xlsx")
+data.head()
+output:    	    city	area	price
+          0 	mumbai	3000	550000
+          1 	mumbai	4000	800000
+          2 	mumbai	3700	650000
+          3 	mumbai	2900	520000
+          4 	mumbai	3500	610000
+              <h4> Dummies Variable </h4>
+dummies = pd.get_dummies(data.city)
+dummies
+output :      assam 	banglore	delhi	mumbai
+           0	0	       0	      0     	1
+           1	0	       0	      0     	1
+           2	0	       0	      0     	1
+           3	0	       0	      0     	1
+           4	0	       0	      0     	1
+           5	0	       0	      0     	1
+           6	0	       0	      1     	0
+           7	0	       0	      1     	0
+           8	0	       0	      1     	0
+           9	0	       0	      1     	0
+           10	0	       1	      0     	0
+           11	0	       1	      0     	0
+           12	0	       1	      0     	0
+           13	0	       1	      0     	0
+           14	0	       1	      0     	0
+           15	1	       0	      0     	0
+           16	1	       0	      0     	0
+           17	1	       0	      0     	0
+           18	1	       0	      0     	0  
+        <h4>Merged All The Data into one dataframe</h4>
+merged = pd.concat([ data,dummies ], axis=1)
+merged
+output :    city	area	price	assam	banglore	delhi	mumbai
+       0	mumbai	3000	550000	0       0                0      1
+       1	mumbai	4000	800000	0       0                0      1
+       2	mumbai	3700	650000	0       0                0      1
+       3	mumbai	2900	520000	0       0                0      1
+       4	mumbai	3500	610000	0       0                0      1
+       5	mumbai	2600	450000	0       0                0      1
+       6	delhi	3200	510000	0       0                1      0
+       7	delhi	3000	480000	0       0                1      0
+       8	delhi	4200	780000	0       0                1      0
+       9	delhi	3400	550000	0       0                1      0
+       10	banglore3000	600000	0	1	         0  	0
+       11	banglore2500	500000	0	1	         0  	0
+       12	banglore3100	623000	0	1	         0  	0
+       13	banglore3900	840000	0	1	         0  	0
+       14	banglore3500	700000	0	1	         0  	0
+       15	assam	2500	280000	1	0	         0  	0
+       16	assam	3300	350000	1	0	         0  	0
+       17	assam	4000	450000	1	0	         0  	0
+       18	assam	4200	500000	1	0	         0  	0     
+       <h4> Final data</h4>  
+<p>Now we drop city column because their elements also available in data and also remove 1 column for protect your data from dummy variable trap.you can drop any columns in ['delhi','assam','mumbai','banglore'] </p>
+final_data = merged.drop(['city','assam'],axis=1)
+final_data.head()
+output:     
+                area	price	banglore   delhi   mumbai
+           0	3000	550000	0             0       1
+           1	4000	800000	0             0       1
+           2	3700	650000	0             0       1
+           3	2900	520000	0             0       1
+           4	3500	610000	0             0       1
+         <h4> Train the model</h4>
+x= final_data.drop(['price'],axis=1) 
+y = final_data.price
+from sklearn.linear_model import LinearRegression
+model = LinearRegression()
+model.fit(x,y)
+          <h4>Predict/test the model</h4>
+model.predict(x)
+output:   
+array([540730.53311794, 738152.18093699, 678925.68659127, 520988.36833603,
+       639441.35702746, 461761.87399031, 530644.58804524, 491160.25848143,
+       728066.23586429, 570128.91760905, 613115.67043619, 514404.84652666,
+       632857.8352181 , 790795.15347334, 711826.49434572, 197578.35218095,
+       355515.67043619, 493710.82390953, 533195.15347334])
+<h5>predict the data for new area</h5>
+model.predict([[3000,0,0,1]])   #area=3000,city=mumbai
+output:    array([540730.53311794]) <br>
+model.predict([[4000,1,0,0]])   #area=4000, city=banglore
+output:   array([810537.31825524])
+
+        </code>
+    </pre>
+</div>
+<div style="margin-left: 20px;">
+    <h1>Using Label Encoder</h1>
+    <pre style="background-color: black;">
+        <code style="color: white;">
+            <p>Import label encoder so make the copy of old data and make label encoding in city columns(categorical columns)</p>
+from sklearn.preprocessing import LabelEncoder
+le = LabelEncoder()
+dfle = data
+dfle.city = le.fit_transform(dfle.city)
+dfle.head()
+output:   
+              city	area	price
+       0	3	3000	550000
+       1	3	4000	800000
+       2	3	3700	650000
+       3	3	2900	520000
+       4	3	3500	610000
+
+x= dfle[['city','area']].values
+y = dfle.price.values
+
+<h2> Now use one hot encoder to create dummy variables for each of the town</h2>
+from sklearn.preprocessing import OneHotEncoder
+from sklearn.compose import ColumnTransformer
+ct = ColumnTransformer([('city', OneHotEncoder(), [0])], remainder = 'passthrough')
+
+<h3>Train the model</h3>
+x = ct.fit_transform(x)
+x = x[:,1:]   <h4>Remove 1 column for protect from trap</h4>
+model.fit(x,y)
+<h3>Predict variables for new area </h3>
+model.predict([[0,0,1,3400]])          #area=3400, city = mumbai
+output:   array([619699.19224556]) 
+        </code>
+    </pre>
+</div>
+    <!-- pagination -->
+    <nav aria-label="Page navigation example" my=100>
+        <ul class="pagination justify-content-center" center ="right">
+          
+          <li class="page-item"><a class="page-link bg-dark text-light" href="/logistic">Next</a></li>
+        </ul>
+      </nav>
+  
+         <!-- Footer -->
+         <footer class="p-5 bg-dark text-white text-center position-relative">
+          <div class="container">
+            <p class="lead">Copyright &copy; 2021 Machine learning Bootcamp</p>
+    
+            <a href="#" class="position-absolute bottom-0 end-0 p-5">
+              <i class="bi bi-arrow-up-circle h1"></i>
+            </a>
+          </div>
+        </footer>
+    
+</body>
+<script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    ></script>
+</html>

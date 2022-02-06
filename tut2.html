@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet"
+        type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'
+        type='text/css'>
+    <link
+        href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+        rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', filename='css/clean-blog.min.css') }}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+   
+    <title>Linear Regression</title>
+</head>
+<body>
+       <!-- Navbar -->
+       <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-10 fixed-top">
+        <div class="container">
+            <a href="/" class="navbar-brand">Machine learning Bootcamp</a>
+  
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+  
+            <div class="collapse navbar-collapse" id="navmenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a href="/ml" class="nav-link">Machine Learning</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/contact" class="nav-link">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br> <br> <br>
+
+
+    <div style="text-align:center;" class="login">
+        <h1 class="header centre"> Some ML key Terminology </h1>
+        <img src="static/img/lion.jpg"  width="500" height="400" alt="">
+    </div>
+    
+    <br>
+    <h4 style="margin-left: 20px;">Features</h4>
+    <p style="margin-left: 20px;"> <strong>Features</strong>, in machine learning, are characteristics of an object which help us identify the object. For example: hair, ears, eyes, nose, and claws all specify that the animal shown in the picture is a Lion, that is, those external organs of a Lion are declared as its features.
+
+        </p>
+<br>
+<h4 style="margin-left: 20px;"> Labels </h4>
+<p style="margin-left: 20px;">The term <strong>Label</strong>  refers to the tag we give to an object based on its features, that is, after we analyse an object's features, we give it a tag and that tag is called its label. For example: after we analysed her ears, nose and leg we gave the animal in the picture its label, which was a lion.
+    
+
+    <div style="text-align:center;" class="login">
+        <h4> Maching learning algorithms</h4>
+        <p> <strong>Data</strong> &rarr;  <strong>Training the machines</strong> &rarr; <strong>Building a Model </strong> &rarr; <strong>Predicting the outcome</strong> </p>
+
+    </div>
+<br>
+<h4 style="margin-left: 20px;">
+    Algorithims
+</h4>
+<p style="margin-left: 20px;">A set of rules and stastical techniques used to  learn pattern from data </p> <br>
+<h4 style="margin-left: 20px;">Model</h4>
+<p style="margin-left: 20px;">A model is used to trained by using a machine learning algorithims</p> <br>
+<h4 style="margin-left: 20px;">Predictor Variable </h4>
+<p style="margin-left: 20px;">It is a features of data that can be used to predict output </p>
+<br>
+<h4 style="margin-left: 20px;">Training Data</h4>
+<p style="margin-left: 20px;">The machine learning model is built using training data</p> <br>
+<h4 style="margin-left: 20px;">Testing Data</h4>
+<p style="margin-left: 20px;">The machine learning model is tested using the testing data</p>
+
+<div style="text-align:center;" class="login">
+    <h4> A short quiz </h4>
+    
+</div>
+
+
+
+    <div class="container">
+
+        <header>
+            <div class="center">
+                <h1>Short Ml Quiz</h1>
+            </div>
+        
+
+        <section id="instructions" class="center">
+            </h3>
+            <button id="startBtn">Start</button>
+        </section>
+
+        <section id="quiz">
+            <div>
+                <h3 class="left">Score:  <span id="displayScore">0</span></h3>
+                <h3 class="right">Question: <span id="displayQCount">1</span> of  5</h3>
+            </div>
+            <div>
+                <h2 id="askQuestion" class="center"> 
+                    
+                    
+                </h2>
+
+                <form id="form">
+                    <div>
+                        <input id="label0" type="radio" name="option" value="">
+                        <label id="answer0" for=""></label>
+                    </div>
+                    <div>
+                        <input id="label1" type="radio" name="option" value="">
+                        <label id="answer1" for=""></label>
+                    </div>
+                    <div>
+                        <input id="label2" type="radio" name="option" value="">
+                        <label id="answer2" for=""></label>
+                    </div>
+                    <div>
+                        <input id="label3" type="radio" name="option" value="">
+                        <label id="answer3" for=""></label>
+                    </div>
+                </form>
+
+            <button id="submitBtn">Submit</button>
+            </div>
+        </section>
+
+        <section id="showScore">
+            <h2 id="inform" class="center"></h2>
+            <button id="resetBtn">Try Again?</button>
+        </section>
+
+    </div>
+
+<!-- JavaScript -->
+<script src="static/javascript/qyiz.js">
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+</script>
+
+<!-- pagination -->
+<nav aria-label="Page navigation example" my=100>
+    <ul class="pagination justify-content-center" center ="right">
+      
+      <li class="page-item"><a class="page-link bg-dark text-light" href="/multiple">Next</a></li>
+    </ul>
+  </nav>
+
+     <!-- Footer -->
+     <footer class="p-5 bg-dark text-white text-center position-relative">
+      <div class="container">
+        <p class="lead">Copyright &copy; 2021 Machine learning Bootcamp</p>
+
+        <a href="#" class="position-absolute bottom-0 end-0 p-5">
+          <i class="bi bi-arrow-up-circle h1"></i>
+        </a>
+      </div>
+    </footer>
+    <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"
+  ></script>
+
+
+
+</body>
+</html>

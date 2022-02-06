@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet"
+        type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'
+        type='text/css'>
+    <link
+        href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+        rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', filename='css/clean-blog.min.css') }}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Machine Learning Bootcamp </title>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-10 fixed-top">
+        <div class="container">
+            <a href="/" class="navbar-brand">Machine learning Bootcamp</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navmenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a href="/ml" class="nav-link">Machine Learning</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/contact" class="nav-link">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Learn Sections -->
+    <section id="learn" class="p-5">
+        <div class="container">
+          <div class="row align-items-center justify-content-between">
+            <div class="col-md">
+              <img src="static/img/m.jpg" class="img-fluid" alt="" />
+            </div>
+            <div class="col-md p-5">
+              <h2>Machine Learning</h2>
+              <p class="lead">
+                Machine learning is the study of computer algorithms
+                 that can improve automatically through experience 
+                 and by the use of data.
+              </p>
+              <p>
+                <ul>
+                    <li> The term machine learning was coined in 1959 by Arthur Samuel </li>
+                    <li>A computer program is said to learn from experience E with respect to some class of tasks T and performance measure P, if its performance at tasks in T, as measured by P, improves with experience E.</li>
+                    <li> Types of Machine learning
+                        <ul>
+                            <li> Supervised Learning</li>
+                            <li> Unsupervised Learning </li>
+                            <li> Reinforcment Learning </li>
+                        </ul>
+                    </li>
+
+                </ul>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      
+    <!-- Learn Sections -->
+    <section id="learn" class="p-5">
+        <div class="container">
+          <div class="row align-items-center justify-content-between">
+            <div class="col-md">
+              <img src="static/img/1.jpg" class="img-fluid" alt="" />
+            </div>
+            <div class="col-md p-5">
+              <h2> Supervised Learning</h2>
+              <p class="lead">
+                It is a technique in which we teach or train the machine
+                using data which is labelled.(or)
+                In supervised learning, we are given a data set and already
+                know what our correct output should look like, having the
+                idea that there is a relationship between the input and the output.
+              </p>
+              <p>
+               <ul>
+                   <li> Supervised learning problems are categorized
+                        into “regression” and “classification” problems.</li>
+                    <li>In a regression problem, we are trying to predict
+                        results within a continuous output</li>
+                    <li>In a classification problem, we are instead trying
+                         to predict results in a discrete output.</li>
+               </ul> 
+              </p>
+              <h3>Example</h2>
+              <p class="lead">
+                  <ul>
+                      <li>
+                          <strong> Regression </strong> - predict stock price
+                      </li>
+                      <li>
+                          <strong> Classification</strong> - predict spam or not spam
+                      </li>
+                  </ul>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="learn" class="p-5 bg-dark text-light">
+        <div class="container">
+          <div class="row align-items-center justify-content-between">
+            <div class="col-md p-5">
+              <h2>Some famous Supervised Algorithims </h2>
+              <p class="lead">
+                <ul>
+                    <li>Linear Regression</li>
+                    <li>Logistic regression</li>
+                    <li>Decision Tree</li>
+                    <li>Random Forest</li>
+                    <li>Naive Bayes classifier</li>
+                    <li>K nearest neighbour</li>
+                    <li>Support Vector Machine</li>
+                </ul>
+              </p>
+            </div>
+            <div class="col-md">
+              <img src="static/img/2.jpg" class="img-fluid" alt="" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+<!-- Unsupervised ml -->
+
+      <section id="learn" class="p-5">
+        <div class="container">
+          <div class="row align-items-center justify-content-between">
+            <div class="col-md">
+              <img src="static/img/5.png" class="img-fluid" alt="" />
+            </div>
+            <div class="col-md p-5">
+              <h2> Unsupervise Machine Learning</h2>
+              <p class="lead">
+                It is the training of machine learning using information 
+                that is unlablled and allowing the algorithm to act on that 
+                information without guidance
+              </p>
+              <p>
+
+                <ul>
+                    <li>
+                        We can derive this structure by clustering the data based 
+                        on relationships among the variables in the data.
+                    </li>
+                    <li>
+                        It finds similar patterns and make cluster of same patterns
+                    </li>
+                    
+                </ul> 
+              </p>
+              <h3>Example</h3>
+              <ul>
+                  <li> Find all transcations which are fraudlent in nature</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="learn" class="p-5 bg-dark text-light">
+        <div class="container">
+          <div class="row align-items-center justify-content-between">
+            <div class="col-md p-5">
+              <h2>Some famous unSupervised Algorithims </h2>
+              <p class="lead">
+                <ul>
+                    <li>K-means clustering</li>
+                    <li>KNN</li>
+                    <li>Hierarchal clustering</li>
+                    <li>Principle Component Analysis</li>
+                    <li>Neural Networks</li>
+                    <li>Anomaly detection</li>
+
+                    
+                </ul>
+              </p>
+            </div>
+            <div class="col-md">
+              <img src="static/img/6.png" class="img-fluid" alt="" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="learn" class="p-5">
+        <div class="container">
+          <div class="row align-items-center justify-content-between">
+            <div class="col-md">
+              <img src="static/img/7.png" class="img-fluid" alt="" />
+            </div>
+            <div class="col-md p-5">
+              <h2>Reinforcement Learning</h2>
+              <p class="lead">
+                It is a part of machine learning where an agent is put in an 
+                environment and he learns to behave in this enivronment by performing 
+                certain actions and observing the rewards which it's gets from those actions
+                it's advance machine learning
+              </p>
+              <h3>Example</h3>
+              <p>
+                Teaching a game bot to perform better and better at a game by learning and
+                 adapting to the new situation of the game.
+              </p>
+              
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <nav aria-label="Page navigation example" my=100>
+        <ul class="pagination justify-content-center" center ="right">
+          
+          <li class="page-item"><a class="page-link bg-dark text-light" href="/linear">Next</a></li>
+        </ul>
+      </nav>
+         <!-- Footer -->
+    <footer class="p-5 bg-dark text-white text-center position-relative">
+        <div class="container">
+          <p class="lead">Copyright &copy; 2021 Machine learning Bootcamp</p>
+  
+          <a href="#" class="position-absolute bottom-0 end-0 p-5">
+            <i class="bi bi-arrow-up-circle h1"></i>
+          </a>
+        </div>
+      </footer>
+      <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    ></script>
+  
+</body>
+
+</html>

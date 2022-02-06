@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet"
+    type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'
+    type='text/css'>
+  <link
+    href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+    rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  <link href="{{ url_for('static', filename='css/clean-blog.min.css') }}" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+
+  <title>Linear Regression</title>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-10 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">Machine learning Bootcamp</a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a href="/ml" class="nav-link">Machine Learning</a>
+          </li>
+          <li class="nav-item">
+            <a href="/contact" class="nav-link">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <br> <br> <br>
+  <div style="text-align:center;" class="login">
+    <h1 class="header centre"> Linear Regression </h1>
+  </div>
+  <p>
+  <ul>
+    <li> The goal is to take continuous data, Find the equation that best fits the data, and be able forecast out a
+      specific value</li>
+    <li> With <strong>Simple Linear Regression,</strong> you are just simply doing this by creating a <strong>best
+        fit line</strong></li>
+    <li> A popular use of regression is to predict home price and stock price</li>
+    <li>The 3 main metrics that are used for evaluting the trained regression model are <em>Bias</em>,
+      <em>Variance</em> and<em>Error</em>
+    </li>
+
+  </ul>
+  </p>
+  <p style="margin-left: 20px;"> It is a method to predict dependent variables(y) is based on values of independent
+    variables(x). it can be used
+    for the cases where we want to predict some continous quantity</p>
+  <div style="text-align:center;" class="login">
+    <h1 class="header centre"> y = A <sub>0</sub> + A <sub>1</sub>x + C </h1>
+
+  </div>
+
+  <section id="learn" class="p-5">
+    <div class="container">
+      <div class="row align-items-center justify-content-between">
+        <div class="col-md">
+          <img src="static/img/output.png" class="img-fluid" alt="" />
+        </div>
+        <div class="col-md p-5">
+
+          <p class="lead">
+          <ul>
+            <li> <strong>y</strong>= Dependent Variable</li>
+            <li><strong>A <sub>0</sub></strong> = y intercept</li>
+            <li><strong>x</strong> = Independent Variable</li>
+            <li> <strong>C <sub>1</sub></strong>= Error</li>
+            <li><strong>A <sub>1</sub></strong> = Slope</li>
+            <li>This is similar to math y=mx+c equation </li>
+            <li>This graphs comes from previous datasets</li>
+
+          </ul>
+          </p>
+          <p>
+
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </section>
+  <p style="margin-left: 20px;" class="language-python">This is Source code of previous model. This is not good model
+    because they have very few datasets. Now we train linear regression for insurance datasets we have 2 features age
+    and affordibility we want to predict a person will buy insurance or not, So you are ready to create your 1st easy ml
+    model </p>
+  <pre>
+        <code>
+        
+           Step 1:  #Import Module 
+
+            import numpy as np
+            import matplotlib.pyplot as plt
+            import pandas as pd
+            import warnings
+            warnings.filterwarnings('ignore')
+            import pickle
+
+             Step2: #Load the data
+            df = pd.read_excel("Book 6.xlsx")
+            df.head()
+
+    output      Age	 affordibility	bought_insurance
+            0	42	     1	                0
+            1	25	     0	                0
+            2	47	     1	                1
+            3	52	     0	                0
+            4	46	     1	                1
+            
+            Step3: #split the data 
+            from sklearn.model_selection import train_test_split
+            x_train, x_test, y_train, y_test = train_test_split(df[["Age","affordibility"]],df.bought_insurance ,random_state=0)
+            
+             step4: #Train the model
+            from sklearn.linear_model import LinearRegression
+            my_model = LinearRegression()
+            my_model.fit(x_train, y_train)
+            my_model.predict(x_test)
+
+    Output  array([0.58042369, 0.48788136, 0.60686436, 0.72584736, 0.69940669,
+       0.32923736, 0.62008469])
+
+        step5: #Now lets check for any value of age and affordibility
+       my_model.predict([[56,1]])   #age = 56 and affordibility = 1
+    output   array([0.69940669])  #person will buy (output > 0.5)
+
+        </code>
+        </pre>
+  <p style="margin-left: 20px;">This is very simple Linear regression model of previous page now we will learn about
+    advanced linear regression later </p>
+  <p> </p>
+  <br>
+
+  <nav aria-label="Page navigation example" my=100>
+    <ul class="pagination justify-content-center" center="right">
+
+      <li class="page-item"><a class="page-link bg-dark text-light" href="/tut2">Next</a></li>
+    </ul>
+  </nav>
+
+  <!-- Footer -->
+  <footer class="p-5 bg-dark text-white text-center position-relative">
+    <div class="container">
+      <p class="lead">Copyright &copy; 2021 Machine learning Bootcamp</p>
+
+      <a href="#" class="position-absolute bottom-0 end-0 p-5">
+        <i class="bi bi-arrow-up-circle h1"></i>
+      </a>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet"
+        type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'
+        type='text/css'>
+    <link
+        href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+        rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', filename='css/clean-blog.min.css') }}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Logistic</title>
+</head>
+<body>
+       <!-- Navbar -->
+       <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-10 fixed-top">
+        <div class="container">
+            <a href="/" class="navbar-brand">Machine learning Bootcamp</a>
+  
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+  
+            <div class="collapse navbar-collapse" id="navmenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a href="/ml" class="nav-link">Machine Learning</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/contact" class="nav-link">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>  <br> <br>  <br>
+    <h1 style="text-align: center;"> Confusion matrix </h1>
+    <p> In this tutorial we will discuss about  confusion matrix  </p>
+    <p style=> A <strong> Confusion Matrix</strong> is a table that is often used to describe the performance of a classificatiob model(or classifier) on 
+    a set of tets data  for which the true values are known </p>
+    <img src="static/img/confu.png" alt="" srcset="">
+    <p>Let's now define the most basic terms :
+        We take a simple example of disease predictor
+        <ul>
+       <li> true positives (TP): These are cases in which we predicted yes (they have the disease), and they do have the disease. </li>
+       <li> negatives (TN): We predicted no, and they don't have the disease. </li>
+        <li> false positives (FP): We predicted yes, but they don't actually have the disease. </li>
+        <li> false negatives (FN): We predicted no, but they actually do have the disease. </li>
+    </ul>
+    <h2>confusion_matrix on mnist</h2>
+    <pre style="background-color: black;">
+        <code style="color: whitesmoke;">
+import numpy as np
+import pandas as pd
+from sklearn.datasets import load_digits
+mnist = load_digits()
+from sklearn.model_selection import train_test_split
+x_train, x_test, y_train, y_test = train_test_split(mnist.data,mnist.target,train_size=0.8,random_state=0)
+from sklearn.linear_model import LogisticRegression
+clf = LogisticRegression(tol=0.1)
+clf.fit(x_train, y_train)
+
+<h2 style="color: aqua;">confusion matrix</h2>
+y_predicted = model.predict(x_test)
+from sklearn.metrics import confusion_matrix
+cm = confusion_matrix(y_test, y_predicted)
+cm
+        </code>
+    </pre>
+
+    
+
+
+    <!-- pagination -->
+    <nav aria-label="Page navigation example" my=100>
+        <ul class="pagination justify-content-center" center ="right">
+          
+          <li class="page-item"><a class="page-link bg-dark text-light" href="/tree">Next</a></li>
+        </ul>
+      </nav>
+  
+         <!-- Footer -->
+         <footer class="p-5 bg-dark text-white text-center position-relative">
+          <div class="container">
+            <p class="lead">Copyright &copy; 2021 Machine learning Bootcamp</p>
+    
+            <a href="#" class="position-absolute bottom-0 end-0 p-5">
+              <i class="bi bi-arrow-up-circle h1"></i>
+            </a>
+          </div>
+        </footer>
+</body>
+</html>

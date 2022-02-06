@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet"
+        type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'
+        type='text/css'>
+    <link
+        href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+        rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', filename='css/clean-blog.min.css') }}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Logistic</title>
+</head>
+<body>
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-10 fixed-top">
+        <div class="container">
+            <a href="/" class="navbar-brand">Machine learning Bootcamp</a>
+  
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+  
+            <div class="collapse navbar-collapse" id="navmenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a href="/ml" class="nav-link">Machine Learning</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/contact" class="nav-link">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br> <br> <br>
+    <h1 style="text-align: center;">Logistic Regression</h1>
+        <!-- Learn Sections -->
+        <section id="learn" class="p-5">
+            <div class="container">
+              <div class="row align-items-center justify-content-between">
+                <div class="col-md">
+                  <img src="static/img/sig.png" class="img-fluid" alt="Figure of logistic regression example" />
+                  <figcaption> Figure of logistic regression example  </figcaption>
+                </div>
+                <div class="col-md p-5">
+                  <h2>Logistic Regression</h2>
+                  <p class="lead">
+                    <ul>
+                        <li>Logistic Regression, althrough it's name has regression in it's a classifier</li>
+                        <li>It use probability Predictors that means generate probability not prediction</li>
+                        <li>Suppose we have many features they predict probability like 0.012</li>
+                    </ul>
+                  </p>
+                  <p>
+                    <h4>    g(E(y))=&#945;+Bx <sub>1</sub>+yx <sub>2</sub> </h4> 
+                    <ul>
+                        <li>
+                            g = link
+                        </li>
+                        <li>E(y) = Expected value of dependent variable or label </li>
+                        <li>  x<sub>1</sub>,  x<sub>2</sub> = features</li>
+                    </ul>
+                  </p>
+                  
+                </div>
+              </div>
+            </div>
+          </section>
+          <h1 style="text-align: center;">
+              Logistic Regression
+          </h1>
+         <p> Logistic regression is another powerful supervised ML algorithm used for binary classification problems (when target is categorical). The best way to think about logistic regression is that it is a linear regression but for classification problems. Logistic regression essentially uses a logistic function defined below to model a binary output variable. The primary difference between linear regression and logistic regression is that logistic regression's range is bounded between 0 and 1. In addition, as opposed to linear regression, logistic regression does not require a linear relationship between inputs and output variables. This is due to applying a nonlinear log transformation to the odds ratio (will be defined shortly).</p> 
+         <p style="text-align: center;"> <strong>Logistic Regression = 1/1+e <sup>-x</sup></strong></p>
+         <p>As opposed to linear regression where MSE or RMSE is used as the loss function, logistic regression uses a loss function referred to as “maximum likelihood estimation (MLE)” which is a conditional probability. If the probability is greater than 0.5, the predictions will be classified as class 0. Otherwise, class 1 will be assigned. Before going through logistic regression derivation, let's first define the logit function. Logit function is defined as the natural log of the odds. A probability of 0.5 corresponds to a logit of 0, probabilities smaller than 0.5 correspond to negative logit values, and probabilities greater than 0.5 correspond to positive logit values. It is important to note that as illustrated in Fig. 5.17, logistic function ranges between 0 and 1 (P∈[0,1]) while logit function can be any real number from minus infinity to positive infinity (P∈[−∞, ∞]).</p>
+         <p style="text-align: center;"> <strong>Odds= p &frasl; 1-p &rarr; logit(p) = ln(p/1-p) </strong></p>
+         <p>Let's set logit of P to be equal to mx + b, therefore:</p>
+         <p style="margin-left: 20px;"> <strong> logit(p) = mx+b &rarr; mx+b = ln(p/(1-p)) </strong></p>
+         <p style="margin-left: 20px;"> <strong> (p/1-p) = e <sup>(mx+b)</sup> &rarr; p = e <sup>(mx+b)/ 1+ <sup>(mx+b)</sup> </sup> </strong></p>
+         <h3 style="text-align: center;"> logistic Regression Example </h3>
+         <h5 class="header col s12 light" style="text-align: center;">Predict the probability of a person bought insurance or not
+            <br>
+            <br>
+        </h5>
+        <p style="margin-left: 30px;">
+        <form action="{{ url_for('predict3')}} " method="post">
+            <input type="text" name="Age" placeholder="Age" required="required" />
+            <input type="number" name="Affordibility" placeholder="Affordibility" required="required" />
+            
+            <!-- <input type="text" name="interview_score" placeholder="Interview Score" required="required" /> -->
+
+            <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+        </form>
+        </p>
+
+
+        <br>
+        <br>
+        <h5 style="text-align: center;">
+        {{ pred3 }}
+        </h5> 
+
+<!-- pagination -->
+<nav aria-label="Page navigation example" my=100>
+    <ul class="pagination justify-content-center" center ="right">
+      
+      <li class="page-item"><a class="page-link bg-dark text-light" href="/mnist">Next</a></li>
+    </ul>
+  </nav> 
+
+     <!-- Footer -->
+     <footer class="p-5 bg-dark text-white text-center position-relative">
+      <div class="container">
+        <p class="lead">Copyright &copy; 2021 Machine learning Bootcamp</p>
+
+        <a href="#" class="position-absolute bottom-0 end-0 p-5">
+          <i class="bi bi-arrow-up-circle h1"></i>
+        </a>
+      </div>
+    </footer>
+
+    <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"
+  ></script>
+
+    
+</body>
+</html>
